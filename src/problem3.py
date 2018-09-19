@@ -2,7 +2,7 @@
 Exam 1, problem 3.
 
 Authors: David Mutchler, Vibha Alangar, Valerie Galluzzi, Mark Hays,
-         Amanda Stouder, their colleagues and PUT_YOUR_NAME_HERE.
+         Amanda Stouder, their colleagues and Toluwa Nafiu.
 """  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
@@ -89,19 +89,34 @@ def problem3(point, length, delta, window):
     """
     # --------------------------------------------------------------------------
     # TODO: 2. Implement and test this function.
-    # TODO (continued):  IMPORTANT: Use this ITERATIVE ENHANCEMENT PLAN:
-    # TODO (continued):    1. Make the sole VERTICAL line appear,
-    # TODO (continued):         with thickness 3.
-    # TODO (continued):    2. Make the FIRST horizontal line appear.
-    # TODO (continued):    3. Make MORE horizontal lines appear,
-    # TODO (continued):         each delta below the previous one.
-    # TODO (continued):    4. Make each successive horizontal line
-    # TODO (continued):         20 pixels longer than the previous one.
-    # TODO (continued):    5. Make the right NUMBER of horizontal lines.
+    # DONE (continued):  IMPORTANT: Use this ITERATIVE ENHANCEMENT PLAN:
+    # DONE (continued):    1. Make the sole VERTICAL line appear,
+    # DONE (continued):         with thickness 3.
+    # DONE (continued):    2. Make the FIRST horizontal line appear.
+    # DONE (continued):    3. Make MORE horizontal lines appear,
+    # DONE (continued):         each delta below the previous one.
+    # DONE (continued):    4. Make each successive horizontal line
+    # DONE (continued):         20 pixels longer than the previous one.
+    # DONE (continued):    5. Make the right NUMBER of horizontal lines.
     # TODO (continued):    6. Make the horizontal lines each have thickness 3
     # TODO (continued):         and colors per the specified pattern.
     #          Tests have been written for you (above).
     # --------------------------------------------------------------------------
+    vert_end_point = rg.Point(point.x, point.y + length)
+    vert_line = rg.Line(point, vert_end_point)
+    vert_line.color = 'black'
+    vert_line.thickness = 3
+    vert_line.attach_to(window)
+
+    for k in range(length//delta + 1):
+        hor_start_point = rg.Point(point.x, point.y + k * delta)
+        hor_end_point = rg.Point(point.x + length + 20 * k, point.y + k * delta)
+        hor_line = rg.Line(hor_start_point, hor_end_point)
+        hor_line.thickness = 3
+        hor_line.attach_to(window)
+        hor_line.color = 'magenta'
+
+    window.render()
 
 
 # ----------------------------------------------------------------------
