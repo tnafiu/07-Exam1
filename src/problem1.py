@@ -2,8 +2,8 @@
 Exam 1, problem 1.
 
 Authors: David Mutchler, Vibha Alangar, Valerie Galluzzi, Mark Hays,
-         Amanda Stouder, their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         Amanda Stouder, their colleagues and Toluwa Nafiu.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -89,9 +89,19 @@ def problem1a(rectangle, square, thickness, window):
       :type window:    rg.RoseWindow
     """
     # --------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.  SEE THE PICTURES in the PDF!
+    # DONE: 2. Implement and test this function.  SEE THE PICTURES in the PDF!
     #          Tests have been written for you (above).
     # --------------------------------------------------------------------------
+    endpoint_2 = square.center
+    rect_center = rectangle.get_center()
+    endpoint_1 = rg.Point(rect_center.x, (rect_center.y - (rectangle.get_height()/2)))
+    line = rg.Line(endpoint_1, endpoint_2)
+    line.thickness = thickness
+    rectangle.attach_to(window)
+    square.attach_to(window)
+    line.attach_to(window)
+    print(endpoint_1)
+    window.render()
 
 
 def run_test_problem1b():
@@ -137,7 +147,7 @@ def problem1b(point, win, width, height, color):
       Draws an rg.Ellipse for which:
         -- The topmost point of the rg.Ellipse is the given rg.Point.
         -- The width of the rg.Ellipse is the given width.
-        -- The height of the rg.Ellipse is the given width.
+        -- The height of the rg.Ellipse is the given height.
         -- The fill color of the rg.Ellipse is the given color.
       Must render but   ** NOT close **   the window.
 
@@ -149,9 +159,15 @@ def problem1b(point, win, width, height, color):
       :type color:  str
     """
     # --------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.  SEE THE PICTURES in the PDF!
+    # DONE: 3. Implement and test this function.  SEE THE PICTURES in the PDF!
     #          Tests have been written for you (above).
     # --------------------------------------------------------------------------
+    point_1 = rg.Point((point.x - (width/2)), point.y)
+    point_2 = rg.Point((point.x + (width/2)), (point.y + height))
+    ellipse = rg.Ellipse(point_1, point_2)
+    ellipse.fill_color = color
+    ellipse.attach_to(win)
+    win.render()
 
 
 # ------------------------------------------------------------------------------
